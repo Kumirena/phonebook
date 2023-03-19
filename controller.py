@@ -4,7 +4,7 @@ def run():
     view.greetings()
     while True:
         view.menu()
-        answer = input('')
+        answer = input('Чего изволите? ')
         if answer == '1':
             data = model.read_phonebook()
             view.read_phonebook(data)        
@@ -22,5 +22,3 @@ def run():
             view.edit_contact()           
         elif answer == '6':
             break
-            data = model.quit_contact()
-            view.quit_contact()
