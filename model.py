@@ -19,4 +19,12 @@ def find():
         print('К сожалению, контакт не найден')
         return
     
-    
+def add_contact():
+    name = input('Введите имя: ')
+    surname = input('Введите фамилию:')
+    phone = input('Введите номер телефона: ')
+    with open('file.txt', 'a+', encoding= 'utf-8') as file:
+        file.write(name + ' ')
+        file.write(surname + ' ')
+        file.write(phone + ' ')
+    print(f'Контакт {surname} добавлен, спасибо!')
