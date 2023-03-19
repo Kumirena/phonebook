@@ -28,3 +28,19 @@ def add_contact():
         file.write(surname + ' ')
         file.write(phone + ' ')
     print(f'Контакт {surname} добавлен, спасибо!')
+
+
+def delete_contact():    
+    delete_contact = input('Введите фамилию контакта, который хотите удалить: ')
+    delete_contact = delete_contact.lower()
+    with open('file.txt', 'r+', encoding='utf-8') as file:
+        s = file.readlines()
+        s = [line for line in s if delete_contact not in line.lower()]
+    with open('file.txt', 'w', encoding='utf-8') as file:
+        file.writelines(s)
+        #for i in range(len(s)):
+            #if s[i]["name"] == delete_contact:
+                #del s[i]
+                #break
+                #s.pop(i)
+    file.close()
