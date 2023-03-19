@@ -30,7 +30,7 @@ def add_contact():
         file.write(name + ' ')
         file.write(surname + ' ')
         file.write(phone + ' ')
-    print(f'Контакт {surname} добавлен, спасибо!')
+    file.close()
 
 
 def delete_contact():
@@ -40,7 +40,7 @@ def delete_contact():
         for i in range(0, len(s)-1):
             if surname in s[i]:
                 s.pop(i)
-    print(f'Контакт {surname} успешно удален!')
+    file.close()
 
 
 def edit_contact():
@@ -53,4 +53,4 @@ def edit_contact():
     non_empty_lines = (i for i in s if not i.isspace())
     with open('file.txt', 'w', encoding='utf-8') as file_1:
         file_1.writelines(i for i in non_empty_lines)
-    print(f'Контакт {surname} успешно изменен!')
+    file.close()
