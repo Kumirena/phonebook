@@ -21,13 +21,13 @@ def find():
     
 def add_contact():
     name = input('Введите имя: ')
-    surname = input('Введите фамилию:')
+    surname = input('Введите фамилию: ')
     phone = input('Введите номер телефона: ')
     with open('file.txt', 'a+', encoding= 'utf-8') as file:
-        file.write(name + ' ')
-        file.write(surname + ' ')
-        file.write(phone + ' ')
-    print(f'Контакт {surname} добавлен, спасибо!')
+        new_contact = name + ' ' + surname + ' ' + phone 
+        file.write(f"{new_contact}\n")
+        #file.write("%s\n" % new_contact)
+        file.close()
 
 
 def delete_contact():    
@@ -43,4 +43,16 @@ def delete_contact():
                 #del s[i]
                 #break
                 #s.pop(i)
+    file.close()
+
+def edit_contact():
+    surname = input('Введите фамилию контакта, который хотите изменить: ')
+    with open('file.txt', 'r+', encoding='utf-8') as file:
+        s = file.readlines()
+        for i in range(len(s)):
+            if surname in s[i]:
+                s[i] = input('Введите новые фамилию, имя и номер телефона: ') + '\n'             
+    non_empty_lines = (i for i in s if not i.isspace())
+    with open('file.txt', 'w', encoding='utf-8') as file_1:
+        file_1.writelines(i for i in non_empty_lines)      
     file.close()
